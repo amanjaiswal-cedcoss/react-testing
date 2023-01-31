@@ -1,14 +1,15 @@
 import { useState } from "react";
 
 function Counter() {
-  const [count, setCount] = useState(1);
+  const [count, setCount] = useState<number>(1);
+
   return (
     <div className="btn-group mt-4" role="group" aria-label="Basic example">
       <button
         type="button"
         className="btn btn-secondary"
         onClick={() => {
-          setCount((prev) => prev - 1);
+            if (count > 0) {setCount(count- 1);}
         }}
       >
         -
@@ -20,9 +21,7 @@ function Counter() {
         type="button"
         name="inc-count"
         className="btn btn-secondary"
-        onClick={() => {
-          if (count > 0) setCount((prev) => prev + 1);
-        }}
+        onClick={()=>{setCount(count+1)}}
       >
         +
       </button>
