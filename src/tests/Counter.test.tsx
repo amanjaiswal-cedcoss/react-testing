@@ -12,30 +12,21 @@ describe("Counter", () => {
     expect(counter).toHaveTextContent("1");
   });
 
-  test("should increase counter by 1 when plus button is pressed", () => {
+  test("should increase and decrease counter value if plus and minus button is pressed respectively", () => {
     render(<Counter />);
     counter=screen.getByTestId('counter_span');
     increase=screen.getByRole('button',{name:'+'})
+    decrease=screen.getByRole('button',{name:'-'})
     expect(counter).toHaveTextContent("1");
     fireEvent.click(increase);
     expect(counter).toHaveTextContent("2");
-  });
-
-  test("should decrease counter by 1 when minus button is pressed", () => {
-    render(<Counter />);
-    counter=screen.getByTestId('counter_span');
-    decrease=screen.getByRole('button',{name:'-'})
-    expect(counter).toHaveTextContent("1");
     fireEvent.click(decrease);
-    expect(counter).toHaveTextContent("0");
+    expect(counter).toHaveTextContent("1");
   });
 
   test("should not decrease counter if counter value is 0", () => {
-    render(<Counter />);
-    expect(counter).toHaveTextContent("0");
+    expect(counter).toHaveTextContent("1");
     fireEvent.click(decrease);
-    expect(counter).toHaveTextContent("0");
+    expect(counter).toHaveTextContent("1");
   });
-
-
 });

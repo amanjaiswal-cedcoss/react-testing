@@ -9,7 +9,7 @@ function Counter() {
         type="button"
         className="btn btn-secondary"
         onClick={() => {
-            if (count > 0) {setCount(count- 1);}
+            if (count !== 1) {setCount(count- 1);}
         }}
       >
         -
